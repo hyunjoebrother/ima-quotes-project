@@ -1,8 +1,22 @@
-import Head from "next/head";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
-<Head>
-  <meta
-    httpEquiv="Content-Security-Policy"
-    content="upgrade-insecure-requests"
-  />
-</Head>;
+class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    //...
+  }
+
+  render() {
+    return (
+      <Html>
+        <Head>
+          <meta
+            httpEquiv="Content-Security-Policy"
+            content="upgrade-insecure-requests"
+          />
+        </Head>
+      </Html>
+    );
+  }
+}
+
+export default MyDocument;

@@ -52,7 +52,7 @@ const Main: React.FC = () => {
 
       // API 호출
       const apiResponse = await axios.post(
-        "http://127.0.0.1:5001/ima-quotes-project/us-central1/generateSummaryAndQuote",
+        "http://localhost:3000/generateSummaryAndQuote",
         { who, where, what }
       );
 

@@ -43,10 +43,15 @@ const Main: React.FC = () => {
         what,
       });
       alert("완료되었습니다!");
+
+      localStorage.setItem("quotes-who", who);
+      localStorage.setItem("quotes-where", where);
+      localStorage.setItem("quotes-what", what);
       setWho("");
       setWhere("");
       setWhat("");
-      router.push("/");
+
+      router.push("/quotes");
     } catch (error) {
       console.error("Error submitting recommendation:", error);
       alert("제출 중 오류가 발생했습니다. 다시 시도해주세요.");

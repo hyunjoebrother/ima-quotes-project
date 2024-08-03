@@ -53,7 +53,7 @@ const Main: React.FC = () => {
       // API 호출
       const apiResponse = await axios.post(
         // "http://43.202.81.91:3000/generateSummaryAndQuote",
-        `http://${process.env.NEXT_PUBLIC_DNS_API}.ap-northeast-2.compute.amazonaws.com:3000/generateSummaryAndQuote`,
+        `https://${process.env.NEXT_PUBLIC_DNS_API}.ap-northeast-2.compute.amazonaws.com:3000/generateSummaryAndQuote`,
         { who, where, what }
       );
 

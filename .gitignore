@@ -4,6 +4,12 @@ pocketbase
 /pb_data
 /pb_migrations
 .env
+firebase-debug.log*
+firebase-debug.*.log*
+ui-debug.log*
+
+# Firebase cache
+.firebase/
 
 # dependencies
 /node_modules

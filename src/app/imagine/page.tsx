@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 import PocketBase from "pocketbase";
 
 const pb = new PocketBase("https://ima-quotes.pockethost.io");
@@ -9,6 +10,8 @@ const Main: React.FC = () => {
   const [who, setWho] = useState<string>("");
   const [where, setWhere] = useState<string>("");
   const [what, setWhat] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const handleWhoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,25 +38,61 @@ const Main: React.FC = () => {
       return;
     }
 
+    setLoading(true);
+    setError(null);
+
     try {
-      await pb.collection("answers").create({
+      const response = await pb.collection("answers").create({
         who,
         where,
         what,
       });
-      alert("완료되었습니다!");
 
-      localStorage.setItem("quotes-who", who);
-      localStorage.setItem("quotes-where", where);
-      localStorage.setItem("quotes-what", what);
-      setWho("");
-      setWhere("");
-      setWhat("");
+      const { id } = response;
 
+      // API 호출
+      const apiResponse = await axios.post(
+        "http://127.0.0.1:5001/ima-quotes-project/us-central1/generateSummaryAndQuote",
+        { who, where, what }
+      );
+
+      const { summary, quote, info } = apiResponse.data;
+
+      const openaiResponse = await axios.post(
+        "https://api.openai.com/v1/images/generations",
+        {
+          model: "dall-e-3",
+          prompt: summary,
+          n: 1,
+          size: "1024x1024",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const imgUrl = openaiResponse.data.data[0].url;
+
+      await pb.collection("answers").update(id, {
+        quote,
+        info,
+        summary,
+        imgUrl: imgUrl,
+      });
+
+      localStorage.setItem("quotes-quote", quote);
+      localStorage.setItem("quotes-info", info);
+      localStorage.setItem("quotes-summary", summary);
+      localStorage.setItem("quotes-image-url", imgUrl);
+      setLoading(false);
       router.push("/quotes");
     } catch (error) {
       console.error("Error submitting recommendation:", error);
-      alert("제출 중 오류가 발생했습니다. 다시 시도해주세요.");
+      setError("제출 중 오류가 발생했습니다. 다시 시도해주세요.");
+      setLoading(false);
     }
   };
 
@@ -111,9 +150,20 @@ const Main: React.FC = () => {
               <button
                 onClick={handleSubmit}
                 className="flex w-36 h-10 bg-slate-300 rounded-lg text-slate-700 text-base font-medium text-center items-center justify-center"
+                disabled={loading} // Disable button during loading
               >
                 완료
               </button>
+              {loading && (
+                <div className="flex justify-center items-center mt-4">
+                  <img
+                    src="/loading.gif"
+                    alt="Loading..."
+                    className="w-16 h-16"
+                  />
+                </div>
+              )}
+              {error && <p className="mt-4 text-red-500">{error}</p>}
             </div>
           </div>
           <div className="w-full flex flex-col px-9 py-4 bg-gray-300">

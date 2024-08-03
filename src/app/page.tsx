@@ -7,9 +7,9 @@ const pb = new PocketBase("https://ima-quotes.pockethost.io");
 
 type Answer = {
   id: string;
-  who: string;
-  where: string;
-  what: string;
+  summary: string;
+  quote: string;
+  imgUrl: string;
   order: number;
   created: string;
 };
@@ -26,9 +26,9 @@ const Main: React.FC = () => {
           .getList(1, 30, { sort: "created" });
         const formattedAnswers = answers.items.map((item, index) => ({
           id: item.id,
-          who: item.who,
-          where: item.where,
-          what: item.what,
+          summary: item.summary,
+          quote: item.quote,
+          imgUrl: item.imgUrl,
           order: index + 1, // 순서 추가
           created: item.created,
         }));
@@ -97,9 +97,9 @@ const Main: React.FC = () => {
                 <Card
                   key={answer.id}
                   id={answer.id}
-                  who={answer.who}
-                  where={answer.where}
-                  what={answer.what}
+                  summary={answer.summary}
+                  quote={answer.quote}
+                  imgUrl={answer.imgUrl}
                   order={answer.order}
                   created={answer.created}
                 />

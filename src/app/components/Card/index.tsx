@@ -3,9 +3,9 @@ import React from "react";
 
 type CardProps = {
   id: string;
-  who: string;
-  where: string;
-  what: string;
+  quote: string;
+  summary: string;
+  imgUrl: string;
   order: number;
   created: string;
 };
@@ -27,9 +27,9 @@ function formatDateToKorean(dateString: string): string {
 
 const Card: React.FC<CardProps> = ({
   id,
-  who,
-  where,
-  what,
+  quote,
+  summary,
+  imgUrl,
   order,
   created,
 }) => {
@@ -39,10 +39,9 @@ const Card: React.FC<CardProps> = ({
       className="flex flex-col w-full h-full justify-between tb:px-3 lg:px-3 px-4 py-3 bg-[#615698] border rounded-xl shadow-md"
     >
       <div>
-        <h2 className="font-bold sm:text-base text-lg text-white">
-          {who}-{where}
-        </h2>
-        <p className="sm:text-sm text-sm text-white">{what}</p>
+        <h2 className="font-bold sm:text-base text-lg text-white">{summary}</h2>
+        <h3>{quote}</h3>
+        <img src={imgUrl} alt="" />
       </div>
       <div className="2xs:mt-6 xs:mt-6 2sm:mt-6 sm:mt-5 mt-3 lg:mt-4 flex-end flex-col items-end">
         <p className="text-xs font-light text-gray-400">

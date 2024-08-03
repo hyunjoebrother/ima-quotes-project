@@ -55,7 +55,7 @@ exports.generateSummaryAndQuote = onRequest(
         return;
       }
 
-      const prompt = `만약 내일 세상이 멸망한다면 ${who}랑 ${where}에서, ${what}을 하고 싶어요. 해당 내용을 한 줄로 '당신은 지금, 내일 세상이 멸망한다면,'를 시작으로 요약해주고, 어울리는 철학자나 유명인의 명언 하나를  '이름, 명언' 형식으로 알려주고 간단하게 설명해줘. 결과값은 json형식으로 . 각 변수를 summary, quote, info로 설정해줘`;
+      const prompt = `만약 내일 세상이 멸망한다면 ${who}랑 ${where}에서, ${what}을 하고 싶어하네요.. 해당 내용을 한 줄로 '당신은 지금, 내일 세상이 멸망한다면,'를 시작으로 요약해주고, 어울리는 철학자나 유명인의 명언 하나를  '이름, 명언' 형식으로 알려주고 간단하게 설명해줘. 결과값은 json형식으로 . 각 변수를 summary, quote, info로 설정해줘`;
 
       const parsedResponse = await generateContent(prompt);
 

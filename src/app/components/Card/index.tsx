@@ -41,7 +41,7 @@ const Card: React.FC<CardProps> = ({
       <div>
         <h2 className="font-bold sm:text-base text-lg text-white">{summary}</h2>
         <h3>{quote}</h3>
-        <img src={imgUrl} alt="" />
+        <img src={imgUrl} className="w-24 h-24" alt="" />
       </div>
       <div className="2xs:mt-6 xs:mt-6 2sm:mt-6 sm:mt-5 mt-3 lg:mt-4 flex-end flex-col items-end">
         <p className="text-xs font-light text-gray-400">

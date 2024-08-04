@@ -36,11 +36,13 @@ const Card: React.FC<CardProps> = ({
   return (
     <div
       key={id}
-      className="flex flex-col w-full h-full justify-between tb:px-3 lg:px-3 px-4 py-3 bg-[#968ad3] border rounded-xl shadow-md"
+      className="flex flex-col w-full h-full justify-between tb:px-3 lg:px-4 px-4 py-4 bg-[#968ad3] border rounded-xl shadow-md"
     >
       <div>
         <h2 className="font-bold sm:text-base text-lg text-white">{quote}</h2>
-        <h3>{summary}</h3>
+        <p className="sm:my-4 my-3 sm:text-xs text-base text-gray-700">
+          {summary}
+        </p>
         <img src={imgUrl} className="w-full h-[auto]" alt="" />
       </div>
       <div className="2xs:mt-6 xs:mt-6 2sm:mt-6 sm:mt-5 mt-3 lg:mt-4 flex-end flex-col items-end">

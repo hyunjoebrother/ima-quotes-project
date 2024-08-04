@@ -23,6 +23,9 @@ const config: Config = {
         quotesBg: "url('/images/bg-quotes.jpeg')",
         frameBg: "url('/images/card-frame.png')",
       },
+      fontFamily: {
+        brush: ["Nanum Brush Script", "cursive"],
+      },
     },
   },
   plugins: [],

@@ -123,7 +123,7 @@ const Main: React.FC = () => {
 
   return (
     <>
-      <section className="w-full h-screen flex flex-col items-center">
+      <section className="w-full h-screen flex flex-col items-center bg-white">
         <div className="w-full min-h-[36vh] sm:min-h-[40vh] tb:min-h-[48vh] lg:min-h-[56vh] bg-imagineBg bg-no-repeat bg-cover lg:px-12 tb:px-10 px-8 2xs:px-6 mb-1 lg:pt-16 tb:pt-14 sm:pt-12 pt-8 text-white">
           <h3 className="font-bold 2xs:text-xl xs:text-xl 2sm:text-xl text-xl tb:text-2xl lg:text-3xl">
             당신에게 어울리는
@@ -133,33 +133,37 @@ const Main: React.FC = () => {
           </p>
         </div>
         <div className="w-full h-full pt-1">
-          <div className="w-full 2xs:py-6 xs:py-6 2sm:py-6 py-10 px-8 mb-2 bg-white">
+          <div className="w-full 2xs:py-6 xs:py-6 2sm:py-6 py-10 px-8 bg-white">
             <h3 className="font-bold lg:text-xl tb:text-lg sm:text-lg 2sm:text-lg text-base">
               만약에 지금, 내일 세상이 끝난다면
             </h3>
 
             <div className="w-full flex flex-col pt-8">
-              <label htmlFor="who">당신은 누구랑 있나요?</label>
+              <label htmlFor="who" className="text-black">
+                당신은 누구랑 있나요?
+              </label>
               <input
                 type="text"
                 id="who"
                 value={who}
                 placeholder="10자 이내로 작성해주세요"
                 onChange={handleWhoChange}
-                className="tb:w-[32rem] lg:w-[32rem] mt-2 mb-8 p-2 border border-gray-300 rounded-xl"
+                className="text-black tb:w-[32rem] lg:w-[32rem] mt-2 mb-8 p-2 border border-gray-300 rounded-xl"
                 required
               />
-              <label htmlFor="where">당신은 어디에 있나요?</label>
+              <label htmlFor="where" className="text-black">
+                당신은 어디에 있나요?
+              </label>
               <input
                 type="text"
                 id="where"
                 value={where}
                 placeholder="10자 이내로 작성해주세요"
                 onChange={handleWhereChange}
-                className="tb:w-[32rem] lg:w-[32rem] mt-2 mb-8 p-2 border border-gray-300 rounded-xl"
+                className="text-black tb:w-[32rem] lg:w-[32rem] mt-2 mb-8 p-2 border border-gray-300 rounded-xl"
                 required
               />
-              <label htmlFor="what">
+              <label htmlFor="what" className="text-black">
                 당신은 무엇을 하고 있나요? (30자 이내)
               </label>
               <input
@@ -168,7 +172,7 @@ const Main: React.FC = () => {
                 value={what}
                 placeholder="30자 이내로 작성해주세요"
                 onChange={handleWhatChange}
-                className="tb:w-[32rem] lg:w-[32rem] mt-2 p-2 border border-gray-300 rounded-xl"
+                className="text-black tb:w-[32rem] lg:w-[32rem] mt-2 p-2 border border-gray-300 rounded-xl"
                 required
               />
               <button

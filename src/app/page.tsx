@@ -46,8 +46,7 @@ const Main: React.FC = () => {
   if (isFetching) {
     return (
       <main className="w-full h-screen bg-white flex flex-col items-center justify-center">
-        {/* <img src={movingBus.src} alt="" className="w-[40vw] h-[40vh]" /> */}
-        <p className="text-black text-lg font-bold">로딩중...</p>
+        <p className="text-black text-lg font-bold">지금, 명언을 로딩중...</p>
       </main>
     );
   }
@@ -61,6 +60,8 @@ const Main: React.FC = () => {
           </h3>
           <p className="mt-4 2xs:text-xs xs:text-xs text-sm tb:text-base lg:text-base font-medium">
             당신한테 어울리는 명언 카드를 보여드려요
+            <br />
+            지금, 명언 (Ima-Quotes)
           </p>
           {answersData.length !== 0 ? (
             <>

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -36,4 +38,10 @@ body {
 .gradient-border {
   border: 5px dashed transparent; /* 기본 테두리를 투명으로 설정 */
   border-image: linear-gradient(90deg, gold, darkorange) 1; /* 금색 그라데이션을 사용한 테두리 이미지 설정 */
+}
+
+.nanum-brush-script-regular {
+  font-family: "Nanum Brush Script", cursive;
+  font-weight: 400;
+  font-style: normal;
 }

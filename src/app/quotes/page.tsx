@@ -68,7 +68,7 @@ const Quotes: React.FC = () => {
       kakao.Link.sendDefault({
         objectType: "feed",
         content: {
-          title: "지금, 당신의 명언",
+          title: "지금, 명언",
           description:
             "만약에 지금, 내일 세상이 끝난다면 당신한테 어울리는 명언은?",
           imageUrl: "https://ima-quotes.com/ogKakao.png",
@@ -79,7 +79,7 @@ const Quotes: React.FC = () => {
         },
         buttons: [
           {
-            title: "지금, 당신의 명언",
+            title: "지금, 명언",
             link: {
               mobileWebUrl: "https://ima-quotes.com",
               webUrl: "https://ima-quotes.com",

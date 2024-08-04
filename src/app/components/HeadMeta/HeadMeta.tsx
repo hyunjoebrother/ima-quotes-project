@@ -18,7 +18,7 @@ const HeadMeta: React.FC = () => {
           content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
         <meta property="og:type" content="website" />
-        <meta name="title" content="지금, 당신의 명언 (Ima-Quotes)" />
+        <meta name="title" content="지금, 명언 (Ima-Quotes)" />
         <meta
           name="description"
           content="만약에 지금, 내일 세상이 끝난다면 당신한테 어울리는 명언은?"
@@ -29,7 +29,7 @@ const HeadMeta: React.FC = () => {
           property="og:image"
           content="https://ima-quotes.com/ogImage.png"
         />
-        <meta property="og:title" content="지금, 당신의 명언 (Ima-Quotes)" />
+        <meta property="og:title" content="지금, 명언 (Ima-Quotes)" />
         <meta
           property="og:description"
           content="만약에 지금, 내일 세상이 끝난다면 당신한테 어울리는 명언은?"
@@ -39,7 +39,7 @@ const HeadMeta: React.FC = () => {
           name="twitter:image"
           content="https://ima-quotes.com/ogImage.png"
         />
-        <meta name="twitter:title" content="지금, 당신의 명언 (Ima-Quotes)" />
+        <meta name="twitter:title" content="지금, 명언 (Ima-Quotes)" />
         <meta
           name="twitter:description"
           content="만약에 지금, 내일 세상이 끝난다면 당신한테 어울리는 명언은?"

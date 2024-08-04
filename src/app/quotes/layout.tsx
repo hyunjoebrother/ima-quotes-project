@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
+import Script from "next/script";
+
 import { Inter } from "next/font/google";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
 
 export const metadata: Metadata = {
   title: "지금, 당신의 명언 (Ima-Quotes)",
@@ -17,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
+      <Script src="https://developers.kakao.com/sdk/js/kakao.js" async />
     </html>
   );
 }

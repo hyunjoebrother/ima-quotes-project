@@ -21,6 +21,7 @@ const config: Config = {
         mainBg: "url('/images/bg-main.jpeg')",
         imagineBg: "url('/images/bg-imagine.jpeg')",
         quotesBg: "url('/images/bg-quotes.jpeg')",
+        frameBg: "url('/images/card-frame.png')",
       },
     },
   },

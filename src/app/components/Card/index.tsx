@@ -36,15 +36,15 @@ const Card: React.FC<CardProps> = ({
   return (
     <div
       key={id}
-      className="flex flex-col w-full h-full justify-between tb:px-3 lg:px-3 px-4 py-3 bg-[#615698] border rounded-xl shadow-md"
+      className="flex flex-col w-full h-full justify-between tb:px-3 lg:px-3 px-4 py-3 bg-[#968ad3] border rounded-xl shadow-md"
     >
       <div>
-        <h2 className="font-bold sm:text-base text-lg text-white">{summary}</h2>
+        <h2 className="font-bold sm:text-base text-lg text-white">{quote}</h2>
         <h3>{quote}</h3>
-        <img src={imgUrl} className="w-24 h-24" alt="" />
+        <img src={imgUrl} className="w-full h-[auto]" alt="" />
       </div>
       <div className="2xs:mt-6 xs:mt-6 2sm:mt-6 sm:mt-5 mt-3 lg:mt-4 flex-end flex-col items-end">
-        <p className="text-xs font-light text-gray-400">
+        <p className="text-xs font-light text-gray-300">
           {formatDateToKorean(created)}
         </p>
         <p className="text-sm font-bold text-gray-200">{order}번째 명언</p>

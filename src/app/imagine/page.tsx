@@ -1,18 +1,43 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import PocketBase from "pocketbase";
 
 const pb = new PocketBase("https://ima-quotes.pockethost.io");
 
+const loadingMessages = [
+  "로딩중입니다..",
+  "명언을 찾는 중입니다.....",
+  "잠시만 기다려주세요..",
+  "금방 준비됩니다...",
+  "곧 완료됩니다..",
+];
+
 const Main: React.FC = () => {
   const [who, setWho] = useState<string>("");
   const [where, setWhere] = useState<string>("");
   const [what, setWhat] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [loadingText, setLoadingText] = useState<string>("로딩중입니다...");
   const router = useRouter();
+
+  useEffect(() => {
+    let loadingInterval: NodeJS.Timeout;
+
+    if (loading) {
+      let messageIndex = 0;
+      loadingInterval = setInterval(() => {
+        setLoadingText(loadingMessages[messageIndex]);
+        messageIndex = (messageIndex + 1) % loadingMessages.length;
+      }, 2500);
+    }
+
+    return () => {
+      clearInterval(loadingInterval);
+    };
+  }, [loading]);
 
   const handleWhoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length <= 10) {
@@ -99,13 +124,12 @@ const Main: React.FC = () => {
   return (
     <>
       <section className="w-full h-screen flex flex-col items-center">
-        <div className="w-full min-h-[36vh] sm:min-h-[40vh] tb:min-h-[48vh] lg:min-h-[56vh] bg-imagineBg bg-no-repeat bg-cover lg:px-12 tb:px-10 px-8 2xs:px-6 mb-1 lg:pt-16 tb:pt-14 sm:pt-12 pt-8 text-black">
+        <div className="w-full min-h-[36vh] sm:min-h-[40vh] tb:min-h-[48vh] lg:min-h-[56vh] bg-imagineBg bg-no-repeat bg-cover lg:px-12 tb:px-10 px-8 2xs:px-6 mb-1 lg:pt-16 tb:pt-14 sm:pt-12 pt-8 text-white">
           <h3 className="font-bold 2xs:text-xl xs:text-xl 2sm:text-xl text-xl tb:text-2xl lg:text-3xl">
             당신에게 어울리는
           </h3>
-
-          <p className="mt-4 2xs:text-xs xs:text-xs text-sm tb:text-base lg:text-base font-medium">
-            명언과 장면을 알려드릴게요
+          <p className="mt-2 2xs:text-xs xs:text-xs text-sm tb:text-base lg:text-base font-medium">
+            명언 카드를 찾아볼게요
           </p>
         </div>
         <div className="w-full h-full pt-1">
@@ -115,7 +139,7 @@ const Main: React.FC = () => {
             </h3>
 
             <div className="w-full flex flex-col pt-8">
-              <label htmlFor="who">당신은 누구랑 있을까요</label>
+              <label htmlFor="who">당신은 누구랑 있나요?</label>
               <input
                 type="text"
                 id="who"
@@ -125,7 +149,7 @@ const Main: React.FC = () => {
                 className="tb:w-[32rem] lg:w-[32rem] mt-2 mb-8 p-2 border border-gray-300 rounded-xl"
                 required
               />
-              <label htmlFor="where">당신은 어디에 있을까요</label>
+              <label htmlFor="where">당신은 어디에 있나요?</label>
               <input
                 type="text"
                 id="where"
@@ -136,7 +160,7 @@ const Main: React.FC = () => {
                 required
               />
               <label htmlFor="what">
-                당신은 무엇을 하고 있을까요 (30자 이내)
+                당신은 무엇을 하고 있나요? (30자 이내)
               </label>
               <input
                 type="text"
@@ -149,18 +173,21 @@ const Main: React.FC = () => {
               />
               <button
                 onClick={handleSubmit}
-                className="flex w-36 h-10 bg-slate-300 rounded-lg text-slate-700 text-base font-medium text-center items-center justify-center"
-                disabled={loading} // Disable button during loading
+                className="mt-10 flex w-36 h-10 bg-[#968ad3] rounded-lg text-white text-base font-medium text-center items-center justify-center"
+                disabled={loading}
               >
                 완료
               </button>
               {loading && (
-                <div className="flex justify-center items-center mt-4">
+                <div className="fixed flex-col gap-3 inset-0 flex items-center justify-center bg-[#03040d] bg-opacity-70 z-50">
                   <img
-                    src="/loading.gif"
+                    src="../images/gif-shuffle.gif"
                     alt="Loading..."
-                    className="w-16 h-16"
+                    className="w-64 h-64"
                   />
+                  <h3 className="text-white text-xl font-bold">
+                    {loadingText}
+                  </h3>
                 </div>
               )}
               {error && <p className="mt-4 text-red-500">{error}</p>}

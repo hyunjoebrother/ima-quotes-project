@@ -12,6 +12,7 @@
     "@google/generative-ai": "^0.16.0",
     "axios": "^1.7.3",
     "cors": "^2.8.5",
+    "html2canvas": "^1.4.1",
     "next": "14.2.5",
     "pocketbase": "^0.21.4",
     "react": "^18",

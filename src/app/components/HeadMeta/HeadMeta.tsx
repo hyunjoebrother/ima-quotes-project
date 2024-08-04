@@ -47,7 +47,7 @@ const HeadMeta: React.FC = () => {
         <meta name="twitter:url" content="https://ima-quotes.com" />
         <meta name="twitter:site" content="@DevDance.Mei" />
       </Head>
-      {/* <Script
+      <Script
         id="microsoft-clarity-init"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
@@ -56,12 +56,12 @@ const HeadMeta: React.FC = () => {
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "");`,
+        })(window, document, "clarity", "script", "ni0ep3gk8u");`,
         }}
       />
       <Script
         strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=G-`}
+        src={`https://www.googletagmanager.com/gtag/js?id=G-KR3BY7XJFG`}
       />
       <Script
         id="gtag-init"
@@ -72,9 +72,9 @@ const HeadMeta: React.FC = () => {
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-');`,
+  gtag('config', 'G-KR3BY7XJFG');`,
         }}
-      /> */}
+      />
     </>
   );
 };

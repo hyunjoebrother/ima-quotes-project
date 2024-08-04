@@ -71,7 +71,7 @@ const Quotes: React.FC = () => {
           title: "지금, 당신의 명언",
           description:
             "만약에 지금, 내일 세상이 끝난다면 당신한테 어울리는 명언은?",
-          imageUrl: "https://ima-quotes.com/ogImage.png",
+          imageUrl: "https://ima-quotes.com/ogKakao.png",
           link: {
             mobileWebUrl: "https://ima-quotes.com",
             webUrl: "https://ima-quotes.com",

@@ -40,7 +40,7 @@ const Card: React.FC<CardProps> = ({
     >
       <div>
         <h2 className="font-bold sm:text-base text-lg text-white">{quote}</h2>
-        <h3>{quote}</h3>
+        <h3>{summary}</h3>
         <img src={imgUrl} className="w-full h-[auto]" alt="" />
       </div>
       <div className="2xs:mt-6 xs:mt-6 2sm:mt-6 sm:mt-5 mt-3 lg:mt-4 flex-end flex-col items-end">

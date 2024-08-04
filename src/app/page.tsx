@@ -82,7 +82,7 @@ const Main: React.FC = () => {
           </h3>
           {answersData.length === 0 ? (
             <div className="w-full flex text-center text-lg text-gray-700">
-              <h3>당신이 이웃들에게 첫번째로 메뉴를 추천해주세요</h3>
+              <h3>당신이 첫번째로 명언 카드를 보여주세요</h3>
               <a href="/imagine">
                 <div className="lg:mt-40 tb:mt-32 sm:mt-30 2sm:mt-28 xs:mt-16 2xs:mt-28 flex lg:w-60 lg:h-10 tb:w-56 tb:h-12 sm:w-48 sm:h-10 2sm:w-full 2sm:h-10 2sm:rounded-full xs:w-full xs:h-10 xs:rounded-full 2xs:w-full 2xs:h-10 2xs:rounded-full rounded-xl bg-white text-center items-center justify-center">
                   <p className="text-[#968ad3] font-bold xs:text-sm sm:text-sm text-base 2xs:text-sm">

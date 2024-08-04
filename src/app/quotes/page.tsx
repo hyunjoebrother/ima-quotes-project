@@ -71,7 +71,7 @@ const Quotes: React.FC = () => {
           title: "지금, 당신의 명언",
           description:
             "만약에 지금, 내일 세상이 끝난다면 당신한테 어울리는 명언은?",
-          imageUrl: "https://ima-quotes.com/og-image.png",
+          imageUrl: "https://ima-quotes.com/ogImage.png",
           link: {
             mobileWebUrl: "https://ima-quotes.com",
             webUrl: "https://ima-quotes.com",
@@ -192,6 +192,15 @@ const Quotes: React.FC = () => {
             >
               메인으로 이동
             </button>
+            <p className="w-full flex mt-2 font-brush text-xs sm:text-sm tb:text-base lg:text-lg  font-bold text-[#968ad3] items-center justify-center">
+              <a
+                href="https://www.youtube.com/watch?v=vvN4FgqNXwE"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                [노래추천] 세븐틴 - 만약에 말야, 세상의 마지막 밤이 온다면
+              </a>
+            </p>
           </div>
         </div>
         {/* <button

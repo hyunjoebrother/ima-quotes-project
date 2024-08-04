@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import PocketBase from "pocketbase";
 import Card from "./components/Card";
+import HeadMeta from "./components/HeadMeta/HeadMeta";
 
 const pb = new PocketBase("https://ima-quotes.pockethost.io");
 
@@ -53,6 +54,7 @@ const Main: React.FC = () => {
 
   return (
     <>
+      <HeadMeta />
       <section className="w-full h-full flex flex-col items-center">
         <div className="w-full min-h-[36vh] sm:min-h-[40vh] tb:min-h-[48vh] lg:min-h-[56vh] bg-mainBg bg-no-repeat bg-cover bg-center lg:px-12 tb:px-10 px-8 2xs:px-6 mb-1 lg:pt-16 tb:pt-14 sm:pt-12 pt-8 text-white">
           <h3 className="font-bold 2xs:text-xl xs:text-xl 2sm:text-xl text-xl tb:text-2xl lg:text-3xl">

@@ -134,7 +134,7 @@ const Main: React.FC = () => {
         </div>
         <div className="w-full h-full pt-1">
           <div className="w-full 2xs:py-6 xs:py-6 2sm:py-6 py-10 px-8 bg-white">
-            <h3 className="font-bold lg:text-xl tb:text-lg sm:text-lg 2sm:text-lg text-base">
+            <h3 className="text-bold font-bold lg:text-xl tb:text-lg sm:text-lg 2sm:text-lg text-base">
               만약에 지금, 내일 세상이 끝난다면
             </h3>
 

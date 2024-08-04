@@ -73,7 +73,7 @@ const Quotes: React.FC = () => {
           >
             <div className="w-full flex flex-col items-center justify-center">
               <h1 className="text-2xl tb:text-3xl lg:text-3xl font-bold font-brush">
-                "{quote}"
+                {quote}
               </h1>
               {imageUrl && (
                 <img
@@ -101,7 +101,7 @@ const Quotes: React.FC = () => {
           <div>
             <div>
               <p className="mb-2 text-sm sm:text-base tb:text-lg lg:text-xl font-bold text-gray-200">
-                화면을 캡처해서 "지금, 명언" 카드를 공유하세요!
+                화면을 캡처해서 지금, 명언 카드를 공유하세요!
               </p>
               <button>공유하기</button>
             </div>

@@ -1,6 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import kakao from "../../../public/images/icon-kakao.png";
+import twitter from "../../../public/images/icon-twitter.png";
+import clip from "../../../public/images/icon-clip.png";
 // import html2canvas from "html2canvas";
 
 const Quotes: React.FC = () => {
@@ -55,24 +58,78 @@ const Quotes: React.FC = () => {
   //   }
   // };
 
+  const shareKakao = () => {
+    if (window.Kakao) {
+      const kakao = window.Kakao;
+      if (!kakao.isInitialized()) {
+        kakao.init("54be579679f2897c2fbbb5763c20ffc4");
+      }
+
+      kakao.Link.sendDefault({
+        objectType: "feed",
+        content: {
+          title: "지금, 당신의 명언",
+          description:
+            "만약에 지금, 내일 세상이 끝난다면 당신한테 어울리는 명언은?",
+          imageUrl: "https://ima-quotes.com/og-image.png",
+          link: {
+            mobileWebUrl: "https://ima-quotes.com",
+            webUrl: "https://ima-quotes.com",
+          },
+        },
+        buttons: [
+          {
+            title: "지금, 당신의 명언",
+            link: {
+              mobileWebUrl: "https://ima-quotes.com",
+              webUrl: "https://ima-quotes.com",
+            },
+          },
+        ],
+      });
+    }
+  };
+
+  const shareTwitter = () => {
+    let sendText =
+      "만약에 지금, 내일 세상이 끝난다면 당신한테 어울리는 명언은?";
+    let sendUrl = "https://ima-quotes.com/";
+    window.open(
+      "https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl
+    );
+  };
+
+  const handleCopyClipBoard = (text: string) => {
+    try {
+      navigator.clipboard.writeText(text).then((res) => {
+        alert("링크 복사 완료!");
+      });
+    } catch (error) {
+      alert("복사 실패!!");
+    }
+  };
+
   return (
     <section className="w-full h-min-screen pb-12 flex flex-col items-center bg-black">
       <div className="w-full min-h-[36vh] sm:min-h-[40vh] tb:min-h-[48vh] lg:min-h-[56vh] bg-quotesBg bg-no-repeat bg-center bg-cover lg:px-12 tb:px-10 px-8 2xs:px-6 mb-1 lg:pt-16 tb:pt-14 sm:pt-12 pt-8 text-black">
-        <h3 className="font-bold 2xs:text-xl xs:text-xl 2sm:text-xl text-xl tb:text-2xl lg:text-3xl">
-          당신에게 어울리는 명언과 장면
+        <h3 className="text-white font-bold 2xs:text-xl xs:text-xl 2sm:text-xl text-xl tb:text-2xl lg:text-3xl">
+          당신에게 어울리는 명언과
         </h3>
-        <p className="mt-4 2xs:text-xs xs:text-xs text-sm tb:text-base lg:text-base font-medium">
-          당신의 상상력을 담은 결과입니다
+        <p className="text-white mt-4 2xs:text-xs xs:text-xs text-sm tb:text-base lg:text-base font-medium">
+          당신의 상상력을 그린 카드 결과입니다
         </p>
       </div>
       <div className="w-full h-full 2xs:px-2 xs:px-4 2sm:px-4 sm:px-20 tb:px-28 lg:px-32 flex flex-col items-center">
         <div className="w-full 2xs:py-12 xs:py-10 2sm:py-10 py-10 px-4 mb-2 bg-black text-center">
+          <p className="mb-2 text-sm sm:text-base tb:text-lg lg:text-xl font-bold text-gray-200">
+            지금, 당신의 명언 (Ima-Quotes)
+          </p>
           <div
             id="quote-card"
             className="gradient-border w-full flex flex-col items-center justify-center bg-white px-2 sm:px-12 tb:px-16 lg:px-20 py-12 rounded-xl shadow-lg"
           >
             <div className="w-full flex flex-col items-center justify-center">
-              <h1 className="text-2xl tb:text-3xl lg:text-3xl font-bold font-brush">
+              <h1 className="text-black text-2xl tb:text-3xl lg:text-3xl font-bold font-brush">
                 {quote}
               </h1>
               {imageUrl && (
@@ -85,10 +142,10 @@ const Quotes: React.FC = () => {
               )}
             </div>
             <div className="2xs:px-4 xs:px-4 2sm:px-4">
-              <h3 className="font-bold xs:text-base 2sm:text-base sm:text-base tb:text-lg lg:text-xl text-base my-4">
+              <h3 className="text-black font-bold xs:text-base 2sm:text-base sm:text-base tb:text-lg lg:text-xl text-base my-4">
                 {summary}
               </h3>
-              <h1 className="xs:text-sm 2sm:text-sm sm:text-sm tb:text-lg lg:text-base font-medium leading-[150%]">
+              <h1 className="text-black xs:text-sm 2sm:text-sm sm:text-sm tb:text-lg lg:text-base font-medium leading-[150%]">
                 {info}
               </h1>
             </div>
@@ -103,11 +160,35 @@ const Quotes: React.FC = () => {
               <p className="mb-2 text-sm sm:text-base tb:text-lg lg:text-xl font-bold text-gray-200">
                 화면을 캡처해서 지금, 명언 카드를 공유하세요!
               </p>
-              <button>공유하기</button>
+              <ul className="flex flex-row justify-center list-none gap-4 lg:gap-6 py-2">
+                <li onClick={() => shareKakao()}>
+                  <img
+                    src={kakao.src}
+                    alt=""
+                    className="cursor-pointer 2xs:w-6 2xs:h-6 xs:w-7 xs:h-7 2sm:w-8 2sm:h-8 sm:w-10 sm:h-10 tb:w-10 tb:h-10 lg:w-12 lg:h-12"
+                  />
+                </li>
+                <li onClick={() => shareTwitter()}>
+                  <img
+                    src={twitter.src}
+                    alt=""
+                    className="cursor-pointer 2xs:w-6 2xs:h-6 xs:w-7 xs:h-7 2sm:w-8 2sm:h-8 sm:w-10 sm:h-10 tb:w-10 tb:h-10 lg:w-12 lg:h-12"
+                  />
+                </li>
+                <li
+                  onClick={() => handleCopyClipBoard("https://ima-quotes.com")}
+                >
+                  <img
+                    src={clip.src}
+                    alt=""
+                    className="cursor-pointer 2xs:w-6 2xs:h-6 xs:w-7 xs:h-7 2sm:w-8 2sm:h-8 sm:w-10 sm:h-10 tb:w-10 tb:h-10 lg:w-12 lg:h-12"
+                  />
+                </li>
+              </ul>
             </div>
             <button
               onClick={handleBackToMain}
-              className="flex w-full h-12 bg-[#968ad3] rounded-lg text-white text-base font-medium text-center items-center justify-center mb-4"
+              className="flex w-full h-12 mt-8 bg-[#968ad3] rounded-lg text-white text-base font-medium text-center items-center justify-center mb-4"
             >
               메인으로 이동
             </button>

@@ -14,8 +14,8 @@ declare global {
 import Head from "next/head";
 
 export const metadata: Metadata = {
-  title: "지금, 명언 (Ima-Quotes)",
-  description: "만약에 지금, 내일 세상이 끝난다면 당신한테 어울리는 명언은?",
+  title: "",
+  description: "",
 };
 
 export default function RootLayout({
